@@ -8,11 +8,33 @@
 import SwiftUI
 
 struct AyahListCell: View {
+    
+    let ayah: Ayah
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        HStack(alignment: .top){
+            
+            Text ("\(ayah.numberInSurah))")
+                .fontWeight(.semibold)
+                .foregroundColor(.brandPrimaryC)
+            
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                Text(ayah.text)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.brandPrimaryC)
+                    .multilineTextAlignment(.trailing)
+                    .lineSpacing(10)
+                    
+            }
+            .padding(.top)
+        }
     }
 }
 
 #Preview {
-    AyahListCell()
+    AyahListCell(ayah: MockData.sempleAyah)
 }

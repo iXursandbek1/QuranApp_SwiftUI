@@ -7,12 +7,47 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct SurahListCell: View {
+    
+    let surah: Surah
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(alignment: .top) {
+            
+            VStack() {
+                Text ("\(surah.number))")
+                    .fontWeight(.semibold)
+                    .foregroundColor(.brandPrimaryC)
+            }
+            
+            VStack(alignment: .leading) {
+                Text (surah.englishName)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.brandPrimaryC)
+                    
+                
+                Text (surah.englishNameTranslation)
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(.brandPrimaryC)
+            }
+            
+            Spacer()
+            
+            VStack(alignment: .trailing) {
+                Text(surah.name)
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                
+                Text("\(surah.revelationType.rawValue)")
+                    .font(.subheadline)
+                    .fontWeight(.regular)
+                    .foregroundColor(.secondary)
+            }
+        }
     }
 }
 
 #Preview {
-    SwiftUIView()
+    SurahListCell(surah: MockData.sempleSurah)
 }

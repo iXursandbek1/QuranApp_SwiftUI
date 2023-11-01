@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct AyahListView: View {
+    
+    let surah: Surah
+    @Binding var isShowingAyahView: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ZStack {
+                List() {
+                    ForEach(surah.ayahs, id: \.numberInSurah) { ayah in
+                        AyahListCell(ayah: ayah)
+                    }
+                }
+            }
+        }
+        .navigationTitle(surah.englishName)
+        .listStyle(.grouped)
     }
 }
 
 #Preview {
-    AyahListView()
+    AyahListView(surah: MockData.sempleSurah, isShowingAyahView: .constant(true))
 }
